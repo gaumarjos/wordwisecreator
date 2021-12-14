@@ -55,8 +55,8 @@ if(file_exists('book_dump_html')){
 //Convert Book to HTML
 echo "[+] Convert Book to HTML \n";
 //shell_exec('ebook-convert .\everybodylies.mobi .\book_dump_html');
-shell_exec('ebook-convert "'.$bookfile.'" .\book_dump.htmlz');
-shell_exec('ebook-convert .\book_dump.htmlz .\book_dump_html');
+shell_exec('ebook-convert "'.$bookfile.'" ./book_dump.htmlz');
+shell_exec('ebook-convert ./book_dump.htmlz ./book_dump_html');
 
 if(!file_exists('book_dump_html/index1.html')){
 	die('Please check did you installed Calibre ? Can you run command ebook-convert in shell ? I cannot access command ebook-convert in your system shell, This script need Calibre to process ebook texts');
@@ -119,9 +119,9 @@ for ($i=0; $i<=count($bookcontent_arr); $i++) {
 echo "[+] Create New Book with Wordwised \n";
 $new_bookcontent_with_wordwised = implode(' ', $bookcontent_arr);
 file_put_contents('book_dump_html/index1.html', $new_bookcontent_with_wordwised);
-shell_exec('ebook-convert .\book_dump_html\index1.html "'.$bookpath.'/'.$bookfilename.'-wordwised.epub"');
-shell_exec('ebook-convert .\book_dump_html\index1.html "'.$bookpath.'/'.$bookfilename.'-wordwised.azw3"');
-shell_exec('ebook-convert .\book_dump_html\index1.html "'.$bookpath.'/'.$bookfilename.'-wordwised.pdf"');
+shell_exec('ebook-convert ./book_dump_html/index1.html "'.$bookpath.'/'.$bookfilename.'-wordwised.epub"');
+shell_exec('ebook-convert ./book_dump_html/index1.html "'.$bookpath.'/'.$bookfilename.'-wordwised.azw3"');
+shell_exec('ebook-convert ./book_dump_html/index1.html "'.$bookpath.'/'.$bookfilename.'-wordwised.pdf"');
 
 echo "[+] 3 book EPUB, AZW3, PDF with wordwise generated Done !\n";
 
