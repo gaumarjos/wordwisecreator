@@ -21,7 +21,10 @@ def parse_es_dict(rawml_path, dic, en_klld):
         if len(lemma) == 0:
             element.clear(keep_tail=True)
             continue
+
+        print(lemma)
         lemma = lemma[0]
+
 
         '''
         if lemma not in en_klld:
@@ -45,9 +48,11 @@ def parse_es_dict(rawml_path, dic, en_klld):
 
 if __name__ == "__main__":
     dic = defaultdict(list)
-    # parse_es_dict("Duden Deutsches Universalwörterbuch - Duden.rawml", dic, None)
+    # parse_es_dict("dictionaries/Oxford English - German Dictionary - Oxford University Press.rawml", dic, None)
     parse_es_dict("dictionaries/Oxford German - English Dictionary (German Edition).rawml", dic, None)
+    # parse_es_dict("Duden Deutsches Universalwörterbuch - Duden.rawml", dic, None)
 
+    '''
     with open('wordwise-dict-de-en.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["id", "word", "full_def", "short_def", "example_sentence", "hint_level"])
@@ -59,4 +64,5 @@ if __name__ == "__main__":
                 level2 = level1[-1]
                 # print(level2)
                 writer.writerow([i, key, "", level2, "", 1])
-                i = 1 + 1
+                i = 1 + 1     
+    '''
